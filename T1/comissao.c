@@ -12,15 +12,13 @@ float CalcularComissao(int* vendas)
     // Processa os registros de vendas
     for (int i = 0; vendas[i] != -1; i += 3) 
     {
-        if (vendas[i] == -1) break;
-        
         int pas = vendas[i];
         int regadores = vendas[i + 1];
         int vasos = vendas[i + 2];
         
         // Validação das quantidades vendidas
         if (pas < 1 || pas > 70) return -1.0; // Erro E01
-        if (regadores < 0 || regadores > 80) return -2.0; // Erro E02 (aceita zero agora)
+        if (regadores < 1 || regadores > 80) return -2.0; // Erro E02
         if (vasos < 1 || vasos > 90) return -3.0; // Erro E03
         
         // Calcula o valor total das vendas
@@ -50,12 +48,12 @@ int main()
     int vendas[300]; // Array para armazenar vendas
     int i = 0;
     
-    printf("Insira as vendas (pas, regadores, vasos). Digite -1 para finalizar:\n");
-    while (1) {
-        printf("Cidade %d: ", (i / 3) + 1);
+    printf("Insira as vendas na ordem [pa, regador, vaso, pa, regador, vaso, ..., -1]:\n");
+    while (1) 
+    {
         scanf("%d", &vendas[i]);
         if (vendas[i] == -1) {
-            vendas[i + 1] = -1; // Garante que a sequência termina corretamente
+            vendas[i] = -1; // Garante que a sequência termina corretamente
             break;
         }
         scanf("%d %d", &vendas[i + 1], &vendas[i + 2]);
