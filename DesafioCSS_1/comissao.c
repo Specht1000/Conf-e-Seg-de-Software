@@ -4,28 +4,23 @@
 #define PRECO_REGADORES 30
 #define PRECO_VASOS 25
 
-// Função para calcular a comissão do vendedor
 float CalcularComissao(int* vendas) 
 {
     int total_vendas = 0;
-    
-    // Processa os registros de vendas
+
     for (int i = 0; vendas[i] != -1; i += 3) 
     {
         int pas = vendas[i];
         int regadores = vendas[i + 1];
         int vasos = vendas[i + 2];
         
-        // Validação das quantidades vendidas
-        if (pas < 1 || pas > 70) return -1.0; // Erro E01
-        if (regadores < 1 || regadores > 80) return -2.0; // Erro E02
-        if (vasos < 1 || vasos > 90) return -3.0; // Erro E03
+        if (pas < 1 || pas > 70) return -1.0; 
+        if (regadores < 1 || regadores > 80) return -2.0; 
+        if (vasos < 1 || vasos > 90) return -3.0; 
         
-        // Calcula o valor total das vendas
         total_vendas += (pas * PRECO_PAS) + (regadores * PRECO_REGADORES) + (vasos * PRECO_VASOS);
     }
-    
-    // Calcula a comissão por faixas
+
     float comissao = 0;
     if (total_vendas <= 1000) 
     {
@@ -45,7 +40,7 @@ float CalcularComissao(int* vendas)
 
 int main() 
 {
-    int vendas[300]; // Array para armazenar vendas
+    int vendas[300];
     int i = 0;
     
     printf("Insira as vendas na ordem [pa, regador, vaso, pa, regador, vaso, ..., -1]:\n");
@@ -53,7 +48,7 @@ int main()
     {
         scanf("%d", &vendas[i]);
         if (vendas[i] == -1) {
-            vendas[i] = -1; // Garante que a sequência termina corretamente
+            vendas[i] = -1;
             break;
         }
         scanf("%d %d", &vendas[i + 1], &vendas[i + 2]);

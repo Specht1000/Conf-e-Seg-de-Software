@@ -1,0 +1,4 @@
+- trocar o triangulo no foo com o .h
+- trocar no makefile
+- trocar os nomes dos testes no testrunners
+- nome do arquivo trocar no outro teste
